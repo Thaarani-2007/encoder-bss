@@ -1,0 +1,13 @@
+run,step,step_exact,d_all_si_sdri_db,s_all_silence_sdri_db,eval_root,clips_per_split,validity,source
+sepformer_s_tierb,10000,true,-28.2,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,20000,true,-24.1,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,30000,true,-20.8,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,40000,true,-18.2,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,50000,true,-16.6,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,60000,true,-14.1,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,70000,true,-11.8,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,80000,true,-10.5,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,90000,true,-9.9,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,100000,true,-9.7,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,110000,true,-9.1,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md
+sepformer_s_tierb,120000,true,-8.64,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md

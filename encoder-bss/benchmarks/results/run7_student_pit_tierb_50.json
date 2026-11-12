@@ -1,0 +1,74 @@
+{
+  "generated_at_utc": "2026-09-18T07:12:32.791624+00:00",
+  "run_id": "run7_student_pit_tierb_50",
+  "checkpoint": "C:\\Users\\Harreesh\\projects\\audio-bss-tse\\encoder-bss\\transfer-package\\source-snapshot\\checkpoints\\convtasnet_noisy_student_pit_only\\best.pt",
+  "config": "C:\\Users\\Harreesh\\projects\\audio-bss-tse\\encoder-bss\\configs\\convtasnet_noisy_student_pit_only.yaml",
+  "eval_root": "E:\\bss-audio-data\\eval\\acsim_tierb",
+  "max_clips_per_split": 50,
+  "metric_profile": "train",
+  "training_step": 60000,
+  "checkpoint_best_eval_score_db": 7.250050940513611,
+  "primary_d_all_si_sdri_db": 7.250050940513611,
+  "splits": {
+    "D-All": {
+      "si_sdri": 7.250050940513611,
+      "si_sdr_est_db": 4.528481154441834,
+      "si_sdr_mix_db": -2.7215697717666627,
+      "si_sdri_gain_db": 7.2500509262084964,
+      "inference_ms_per_clip": 77.09098999912385,
+      "inference_rtf": 0.019272747499780963,
+      "audio_sec_per_clip": 4.0
+    },
+    "D-NE": {
+      "si_sdri": 7.084726803302765,
+      "si_sdr_est_db": 4.745901966094971,
+      "si_sdr_mix_db": -2.3388247644901274,
+      "si_sdri_gain_db": 7.084726730585098,
+      "inference_ms_per_clip": 73.64486200036481,
+      "inference_rtf": 0.018411215500091203,
+      "audio_sec_per_clip": 4.0
+    },
+    "D-NR": {
+      "si_sdri": 7.168876535892487,
+      "si_sdr_est_db": 3.8789837312698365,
+      "si_sdr_mix_db": -3.2898927450180055,
+      "si_sdri_gain_db": 7.168876476287842,
+      "inference_ms_per_clip": 73.63307799911126,
+      "inference_rtf": 0.018408269499777818,
+      "audio_sec_per_clip": 4.0
+    },
+    "D-N": {
+      "si_sdri": 7.295620603561401,
+      "si_sdr_est_db": 6.00535144329071,
+      "si_sdr_mix_db": -1.2902690967917443,
+      "si_sdri_gain_db": 7.295620540082455,
+      "inference_ms_per_clip": 73.63184399728198,
+      "inference_rtf": 0.018407960999320495,
+      "audio_sec_per_clip": 4.0
+    },
+    "S-All": {
+      "silence_sdri": -31.789918518066408,
+      "inference_ms_per_clip": 73.6157539987471,
+      "inference_rtf": 0.018403938499686773,
+      "audio_sec_per_clip": 4.0
+    },
+    "S-NE": {
+      "silence_sdri": -32.08098136901855,
+      "inference_ms_per_clip": 73.61574400158133,
+      "inference_rtf": 0.018403936000395332,
+      "audio_sec_per_clip": 4.0
+    },
+    "S-NR": {
+      "silence_sdri": -34.27662731170654,
+      "inference_ms_per_clip": 73.62174199952278,
+      "inference_rtf": 0.018405435499880697,
+      "audio_sec_per_clip": 4.0
+    },
+    "S-N": {
+      "silence_sdri": -30.612093200683592,
+      "inference_ms_per_clip": 73.61989400000311,
+      "inference_rtf": 0.01840497350000078,
+      "audio_sec_per_clip": 4.0
+    }
+  }
+}

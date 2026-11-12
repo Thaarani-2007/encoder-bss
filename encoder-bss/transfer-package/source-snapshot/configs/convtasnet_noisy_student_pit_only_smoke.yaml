@@ -1,0 +1,72 @@
+# PIT-only student control smoke (500 steps, 70/30 inputs).
+project_name: bss-audio-acsim
+run_name: convtasnet_noisy_student_pit_only_smoke
+
+data:
+  root: ${oc.env:BSS_DATA_ROOT,E:/bss-audio-data}
+  sample_rate: 16000
+  clip_seconds: 5.0
+  source: cache
+  cache_dir: ${oc.env:BSS_DATA_ROOT,E:/bss-audio-data}/cache/convtasnet_paired_200k
+  input_mode: student_mix
+  require_paired: true
+  noisy_fraction: 0.70
+  num_workers: 0
+
+training:
+  max_steps: 500
+  batch_size: 1
+  grad_accum_steps: 4
+  precision: bf16
+  grad_clip: 5.0
+  log_every: 50
+  eval_every: 500
+  save_every: 500
+  seed: 42
+  gpu_rest_enabled: false
+  init_checkpoint: checkpoints/convtasnet_clean_teacher_smoke/final.pt
+  init_masker_decoder_from_teacher: true
+
+optimizer:
+  name: adamw
+  lr: 5.0e-4
+  betas: [0.9, 0.99]
+  weight_decay: 0.01
+  warmup_steps: 50
+
+scheduler:
+  mode: cosine
+
+loss:
+  mode: pit_sisnr
+  lambda_collapse: 0.5
+  lambda_mixcopy: 0.25
+
+model:
+  name: convtasnet_noisy
+  n_src: 2
+  encoder_dim: 512
+  kernel_size: 16
+  stride: 8
+  bottleneck_dim: 128
+  hidden_dim: 512
+  n_blocks: 8
+  n_repeats: 3
+  mask_activation: sigmoid
+  student_hidden_dim: 96
+  student_encoder_blocks: 2
+
+eval:
+  root: ${oc.env:BSS_DATA_ROOT,E:/bss-audio-data}/eval/acsim_tierb
+  max_clips_per_split: 10
+  metric_profile: train
+
+wandb:
+  enabled: true
+  offline: false
+  project: bss-audio-acsim
+  tags: [phase1b, convtasnet, smoke, student, pit_only]
+
+simulation:
+  mode: acsim
+  p_speaker2: 1.0

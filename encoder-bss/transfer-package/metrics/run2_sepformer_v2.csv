@@ -1,0 +1,6 @@
+run,step,step_exact,d_all_si_sdri_db,s_all_silence_sdri_db,eval_root,clips_per_split,validity,source,notes
+sepformer_s_tierb_v2,10000,true,-2.36,-1.32,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,S-All recovering from early collapse
+sepformer_s_tierb_v2,20000,true,-1.90,3.49,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,
+sepformer_s_tierb_v2,30000,true,-1.56,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,
+sepformer_s_tierb_v2,40000,true,-1.45,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,best checkpoint
+sepformer_s_tierb_v2,50000,true,-1.51,,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,regression; stopped

@@ -1,0 +1,23 @@
+{
+  "generated_at_utc": "2026-09-18T07:12:42.565533+00:00",
+  "run_id": "run7_teacher_clean_50",
+  "checkpoint": "C:\\Users\\Harreesh\\projects\\audio-bss-tse\\encoder-bss\\transfer-package\\source-snapshot\\checkpoints\\convtasnet_clean_teacher\\best.pt",
+  "config": "C:\\Users\\Harreesh\\projects\\audio-bss-tse\\encoder-bss\\configs\\convtasnet_clean_teacher.yaml",
+  "eval_root": "E:\\bss-audio-data\\eval\\acsim_clean",
+  "max_clips_per_split": 50,
+  "metric_profile": "train",
+  "training_step": 150000,
+  "checkpoint_best_eval_score_db": 9.108170483112335,
+  "primary_d_all_si_sdri_db": 9.108170483112335,
+  "splits": {
+    "D-All": {
+      "si_sdri": 9.108170483112335,
+      "si_sdr_est_db": 9.487759457826614,
+      "si_sdr_mix_db": 0.3795889914035797,
+      "si_sdri_gain_db": 9.108170466423035,
+      "inference_ms_per_clip": 107.99273199867457,
+      "inference_rtf": 0.021598546399734915,
+      "audio_sec_per_clip": 5.0
+    }
+  }
+}

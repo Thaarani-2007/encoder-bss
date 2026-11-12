@@ -1,0 +1,23 @@
+{
+  "run": "phase1_fast_track",
+  "config": "configs/dpmamba_s_fast.yaml",
+  "checkpoint_step": 60000,
+  "eval_root": "D:/bss-audio-data/eval/acsim_fast",
+  "profile": "full",
+  "clip_count": 225,
+  "validity": "externally_reported",
+  "source": "research/phase1b/baselines/phase1-fast-track.json",
+  "metrics": {
+    "D-All_si_sdri_db": -0.462,
+    "D-NE_si_sdri_db": -0.37,
+    "D-NR_si_sdri_db": -0.78,
+    "D-N_si_sdri_db": -0.44,
+    "S-All_silence_sdri_db": 70.03,
+    "S-NE_silence_sdri_db": 70.33,
+    "S-NR_silence_sdri_db": 71.29,
+    "S-N_silence_sdri_db": 65.47,
+    "D-All_pesq": 1.29,
+    "D-All_estoi": 0.42,
+    "D-All_sir_db": 11.31
+  }
+}

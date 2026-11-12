@@ -1,0 +1,5 @@
+run,step,step_exact,d_all_si_sdri_db,collapse_pct,eval_root,clips_per_split,validity,source,notes
+dprnn_m_tierb_v2,10000,true,-0.32,0,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,
+dprnn_m_tierb_v2,70000,false,0.67,0,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,approximate step; local peak
+dprnn_m_tierb_v2,90000,false,0.23,0,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,approximate step; regression
+dprnn_m_tierb_v2,130000,false,0.73,0,acsim_tierb,50,externally_reported,research/phase1b/RUN-HISTORY.md,approximate step; best checkpoint

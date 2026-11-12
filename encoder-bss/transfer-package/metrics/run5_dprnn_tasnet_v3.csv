@@ -1,0 +1,5 @@
+run,step,step_exact,d_all_si_sdri_db,collapse_pct,eval_root,clips_per_split,validity,source,notes
+dprnn_m_tierb_v3_finetune,10000,true,1.16,0,acsim_tierb,50,externally_reported,research/phase1b/RUN5-PLAN.md,
+dprnn_m_tierb_v3_finetune,20000,true,1.31,0,acsim_tierb,50,externally_reported,research/phase1b/RUN5-PLAN.md,
+dprnn_m_tierb_v3_finetune,50000,true,1.41,0,acsim_tierb,50,externally_reported,research/phase1b/RUN5-PLAN.md,best checkpoint
+dprnn_m_tierb_v3_finetune,80000,true,1.21,0,acsim_tierb,50,externally_reported,research/phase1b/RUN5-PLAN.md,regression; stopped

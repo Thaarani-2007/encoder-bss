@@ -1,0 +1,22 @@
+{
+  "checkpoint": "checkpoints/dpmamba_s_acsim_ml_fast/best.pt",
+  "config": "configs/dpmamba_s_fast.yaml",
+  "eval_root": "D:/bss-audio-data/eval/acsim_fast",
+  "profile": "full",
+  "step": 60000,
+  "checkpoint_best_eval_score_db": -1.863,
+  "full_eval": {
+    "D-All_si_sdri": -0.462,
+    "D-NE_si_sdri": -0.37,
+    "D-NR_si_sdri": -0.78,
+    "D-N_si_sdri": -0.44,
+    "S-All_silence_sdri": 70.03,
+    "S-NE_silence_sdri": 70.33,
+    "S-NR_silence_sdri": 71.29,
+    "S-N_silence_sdri": 65.47,
+    "D-All_pesq": 1.29,
+    "D-All_estoi": 0.42,
+    "D-All_sir": 11.31
+  },
+  "note": "Full offline eval (all 225 clips, 7 metrics) on acsim_fast. In-loop best_eval_score was -1.86 dB on 50-clip subset during training. Cross-eval on acsim_tierb: see phase1-tierb-cross-eval.json (-0.10 dB D-All)."
+}

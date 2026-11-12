@@ -1,0 +1,89 @@
+# DPRNN Tier B sanity run — architecture hypothesis test vs SepFormer-S v2.
+# See research/phase1b/PLAN-DPRNN-TIERB-SANITY.md
+project_name: bss-audio-acsim
+run_name: dprnn_s_tierb_sanity
+
+data:
+  root: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}
+  sample_rate: 16000
+  clip_seconds: 4.0
+  source: cache
+  cache_dir: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}/cache/train_acsim_200k
+  num_workers: 0
+
+training:
+  max_steps: 50000
+  batch_size: 1
+  grad_accum_steps: 16
+  precision: bf16
+  grad_clip: 5.0
+  log_every: 50
+  eval_every: 10000
+  save_every: 10000
+  seed: 42
+  gpu_rest_enabled: false
+  early_stop:
+    enabled: true
+    patience: 2
+    min_delta: 0.3
+    stop_on_regression: true
+    regression_delta: 1.0
+    min_steps: 50000
+
+optimizer:
+  name: adamw
+  lr: 3.0e-4
+  betas: [0.9, 0.99]
+  weight_decay: 0.01
+  warmup_steps: 2000
+
+scheduler:
+  mode: plateau
+  patience: 3
+  factor: 0.5
+
+# Match SepFormer-S v2 rebalanced loss (isolate architecture variable).
+loss:
+  mode: acsim_ml
+  lambda_time: 2.0
+  lambda_mstft: 3.0
+  lambda_mel: 3.0
+  lambda_sdr: 12.0
+  mstft_fft_sizes: [512, 1024, 2048]
+  mel_n_fft: 1024
+  mel_n_mels: 128
+
+# DPRNN-S: 128-dim encoder + 128-dim hidden, 6 dual-path layers → 3.602M params.
+model:
+  name: dprnn_s
+  n_src: 2
+  encoder_dim: 128
+  hidden_dim: 128
+  chunk_size: 250
+  n_layers: 6
+
+eval:
+  root: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}/eval/acsim_tierb
+  max_clips_per_split: 50
+  metric_profile: train
+
+wandb:
+  enabled: true
+  project: bss-audio-acsim
+  entity: null
+  tags: [phase1b, dprnn-s, tierb, sanity, v2-loss-match, hypothesis-test]
+  audio:
+    enabled: true
+    split: D-All
+    max_clips: 3
+    clip_indices: [0, 1, 2]
+
+simulation:
+  mode: acsim
+  p_speaker2: 0.5
+  p_static_noise: 0.5
+  p_event_noise: 0.3
+  p_seg: 0.75
+  l1: 0.2
+  l2: 1.0
+  p_event_overlap_removal: 0.5

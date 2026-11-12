@@ -1,0 +1,74 @@
+{
+  "generated_at_utc": "2026-09-18T07:13:28.891512+00:00",
+  "run_id": "run7_teacher_tierb_50",
+  "checkpoint": "C:\\Users\\Harreesh\\projects\\audio-bss-tse\\encoder-bss\\transfer-package\\source-snapshot\\checkpoints\\convtasnet_clean_teacher\\best.pt",
+  "config": "C:\\Users\\Harreesh\\projects\\audio-bss-tse\\encoder-bss\\configs\\convtasnet_clean_teacher.yaml",
+  "eval_root": "E:\\bss-audio-data\\eval\\acsim_tierb",
+  "max_clips_per_split": 50,
+  "metric_profile": "train",
+  "training_step": 150000,
+  "checkpoint_best_eval_score_db": 9.108170483112335,
+  "primary_d_all_si_sdri_db": 5.40305111527443,
+  "splits": {
+    "D-All": {
+      "si_sdri": 5.40305111527443,
+      "si_sdr_est_db": 2.681481246948242,
+      "si_sdr_mix_db": -2.7215697717666627,
+      "si_sdri_gain_db": 5.403051018714905,
+      "inference_ms_per_clip": 73.16916199750267,
+      "inference_rtf": 0.01829229049937567,
+      "audio_sec_per_clip": 4.0
+    },
+    "D-NE": {
+      "si_sdri": 5.781602413654327,
+      "si_sdr_est_db": 3.4427775859832765,
+      "si_sdr_mix_db": -2.3388247644901274,
+      "si_sdri_gain_db": 5.7816023504734035,
+      "inference_ms_per_clip": 70.16171200200915,
+      "inference_rtf": 0.01754042800050229,
+      "audio_sec_per_clip": 4.0
+    },
+    "D-NR": {
+      "si_sdri": 5.596868973374367,
+      "si_sdr_est_db": 2.3069761592149733,
+      "si_sdr_mix_db": -3.2898927450180055,
+      "si_sdri_gain_db": 5.596868904232979,
+      "inference_ms_per_clip": 70.14583199925255,
+      "inference_rtf": 0.017536457999813137,
+      "audio_sec_per_clip": 4.0
+    },
+    "D-N": {
+      "si_sdri": 6.7382089030742645,
+      "si_sdr_est_db": 5.447939736843109,
+      "si_sdr_mix_db": -1.2902690967917443,
+      "si_sdri_gain_db": 6.738208833634854,
+      "inference_ms_per_clip": 70.15227800002322,
+      "inference_rtf": 0.017538069500005804,
+      "audio_sec_per_clip": 4.0
+    },
+    "S-All": {
+      "silence_sdri": -7.924725813567639,
+      "inference_ms_per_clip": 70.18916000262834,
+      "inference_rtf": 0.017547290000657086,
+      "audio_sec_per_clip": 4.0
+    },
+    "S-NE": {
+      "silence_sdri": -6.942515661418438,
+      "inference_ms_per_clip": 70.17571399803273,
+      "inference_rtf": 0.017543928499508185,
+      "audio_sec_per_clip": 4.0
+    },
+    "S-NR": {
+      "silence_sdri": -7.459310654401779,
+      "inference_ms_per_clip": 70.2776059997268,
+      "inference_rtf": 0.017569401499931702,
+      "audio_sec_per_clip": 4.0
+    },
+    "S-N": {
+      "silence_sdri": -3.329976792037487,
+      "inference_ms_per_clip": 70.17499000008684,
+      "inference_rtf": 0.01754374750002171,
+      "audio_sec_per_clip": 4.0
+    }
+  }
+}

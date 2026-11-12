@@ -1,0 +1,27 @@
+{
+  "run": "sepformer_s_tierb_v2",
+  "config": "configs/sepformer_s_tierb_v2.yaml",
+  "eval_root": "D:/bss-audio-data/eval/acsim_tierb",
+  "profile": "train",
+  "max_clips_per_split": 50,
+  "model_params_m": 8.47,
+  "status": "stopped",
+  "stopped_at_step": 50000,
+  "best_checkpoint": "checkpoints/sepformer_s_tierb_v2/best.pt",
+  "best_step": 40000,
+  "best_d_all_si_sdri_db": -1.45,
+  "wandb_run_id": "812fsl1l",
+  "eval_trajectory": {
+    "10000": -2.36,
+    "20000": -1.90,
+    "30000": -1.56,
+    "40000": -1.45,
+    "50000": -1.51
+  },
+  "eval_50clip_verified_2026_09_06": {
+    "best_40k_D-All": -1.45,
+    "step_50k_D-All": -1.51
+  },
+  "s_all_at_20k_db": 3.49,
+  "note": "Training stopped @ 50k due to plateau + regression. Use best.pt @ 40k only. Superseded by Run 4 (dprnn_m_tierb_v2)."
+}

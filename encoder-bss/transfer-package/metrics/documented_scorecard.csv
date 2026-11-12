@@ -1,0 +1,8 @@
+run,best_step,step_exact,best_d_all_si_sdri_db,eval_root,profile,clips_per_split,validity,collapse_pct,source,notes
+phase1_fast_track,60000,true,-1.86,acsim_fast,train,50,documented_valid,,research/phase1b/RUN-HISTORY.md,full offline D-All was -0.462 on 225 clips
+phase1_fast_track_cross_eval,60000,true,-0.10,acsim_tierb,train,50,documented_cross_eval,,research/phase1b/RUN-HISTORY.md,not the canonical Phase 1 metric
+sepformer_s_tierb,120000,true,-8.64,acsim_tierb,train,50,documented_valid,,research/phase1b/RUN-HISTORY.md,
+sepformer_s_tierb_v2,40000,true,-1.45,acsim_tierb,train,50,documented_valid,,research/phase1b/baselines/sepformer-v2-final.json,best valid completed Tier B baseline
+dprnn_s_tierb_sanity,40000,true,2.24,acsim_tierb,train,50,invalidated,80,research/phase1b/baselines/dprnn-sanity-invalidated.json,source collapse
+dprnn_m_tierb_v2,130000,false,0.73,acsim_tierb,train,50,externally_reported,0,research/phase1b/RUN-HISTORY.md,approximate step
+dprnn_m_tierb_v3_finetune,50000,true,1.41,acsim_tierb,train,50,externally_reported,0,research/phase1b/RUN5-PLAN.md,current best documented result

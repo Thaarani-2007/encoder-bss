@@ -1,0 +1,38 @@
+# Transfer manifest. Paths are relative to repository root.
+# Directory entries are intentionally expanded by snapshot_source.py.
+
+[metadata]
+README.md
+pyproject.toml
+environment.md
+
+[implementation]
+src/bss_audio
+
+[configs]
+configs
+
+[scripts]
+scripts
+
+[tests]
+tests
+
+[research]
+research/README.md
+research/AUDIT-REPORT.md
+research/CODE-REFERENCE.md
+research/EXPERIMENT-REGISTRY.md
+research/PAPERS-AND-PRACTICES.md
+research/TRAINING-LEARNINGS.md
+research/analysis-first-run.md
+research/bibliography.md
+research/implementation-status.md
+research/pitfalls-checklist.md
+research/phase1-acsim-ml-goal.md
+research/phase1b
+research/first-run
+
+[optional-external-artifacts]
+# These are copied only if they exist; binary PDFs/checkpoints are not required.
+research/papers/econvtasnet.pdf

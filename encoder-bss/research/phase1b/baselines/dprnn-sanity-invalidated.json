@@ -1,0 +1,14 @@
+{
+  "run": "dprnn_s_tierb_sanity",
+  "config": "configs/dprnn_s_tierb_sanity.yaml",
+  "eval_root": "D:/bss-audio-data/eval/acsim_tierb",
+  "status": "invalid",
+  "invalidated": "2026-09-06",
+  "invalidation_reason": "80% D-All clips show source-collapse (one channel ≈ mixture, other ≈ silence)",
+  "best_checkpoint": "checkpoints/dprnn_s_tierb_sanity/best.pt",
+  "best_step": 40000,
+  "headline_d_all_si_sdri_db": 2.24,
+  "collapse_pct_d_all": 80,
+  "wandb_run_id": "ip5vsvox",
+  "note": "Do NOT use for decisions. Headline +2.24 dB was metric gaming. See research/phase1b/COLLAPSE-RESEARCH.md"
+}

@@ -1,0 +1,19 @@
+{
+  "checkpoint": "checkpoints/dpmamba_s_acsim_ml_fast/best.pt",
+  "config": "configs/dpmamba_s_fast.yaml",
+  "eval_root": "D:/bss-audio-data/eval/acsim_tierb",
+  "profile": "train",
+  "step": 60000,
+  "checkpoint_best_eval_score_db": -1.863,
+  "eval_50_clip": {
+    "D-All_si_sdri": -0.10,
+    "D-NE_si_sdri": -0.08,
+    "D-NR_si_sdri": -0.02,
+    "D-N_si_sdri": -0.54,
+    "S-All_silence_sdri": 57.3,
+    "S-NE_silence_sdri": 57.2,
+    "S-NR_silence_sdri": 57.4,
+    "S-N_silence_sdri": 57.1
+  },
+  "note": "Post-hoc cross-eval of Phase 1 checkpoint on Tier B eval. NOT the Phase 1 training metric — official best is -1.86 dB on acsim_fast (see phase1-fast-track.json and first-run/)."
+}

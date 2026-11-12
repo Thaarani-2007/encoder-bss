@@ -1,0 +1,80 @@
+project_name: bss-audio-acsim
+run_name: sepformer_s_smoke
+
+data:
+  root: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}
+  sample_rate: 16000
+  clip_seconds: 4.0
+  source: cache
+  cache_dir: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}/cache/train_acsim
+  # uses existing Phase-1 5k cache while Tier B 200k cache is pending
+  dataset_length: 5000
+  num_workers: 0
+
+training:
+  max_steps: 256
+  batch_size: 1
+  grad_accum_steps: 8
+  precision: bf16
+  grad_clip: 5.0
+  log_every: 16
+  eval_every: 128
+  save_every: 256
+  seed: 42
+  gpu_rest_enabled: false
+  early_stop:
+    enabled: false
+
+optimizer:
+  name: adam
+  lr: 1.0e-4
+  betas: [0.9, 0.99]
+  weight_decay: 0.0
+  warmup_steps: 32
+
+scheduler:
+  mode: plateau
+  patience: 3
+  factor: 0.5
+
+loss:
+  lambda_time: 100.0
+  lambda_mstft: 10.0
+  lambda_mel: 10.0
+  lambda_sdr: 1.0
+  mstft_fft_sizes: [512, 1024, 2048]
+  mel_n_fft: 1024
+  mel_n_mels: 128
+
+model:
+  name: sepformer_s
+  n_src: 2
+  encoder_dim: 160
+  n_heads: 8
+  d_ffn: 768
+  n_blocks: 6
+  n_stages: 2
+  kernel_size: 16
+  stride: 8
+  chunk_size: 250
+  gradient_checkpointing: true
+
+eval:
+  root: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}/eval/acsim_fast
+  max_clips_per_split: 10
+  metric_profile: train
+
+wandb:
+  enabled: false
+  project: bss-audio-acsim
+  entity: null
+  tags: [smoke-test, sepformer-s]
+
+simulation:
+  mode: acsim
+  p_speaker2: 0.5
+  p_static_noise: 0.5
+  p_event_noise: 0.3
+  p_seg: 0.75
+  l1: 0.2
+  l2: 1.0

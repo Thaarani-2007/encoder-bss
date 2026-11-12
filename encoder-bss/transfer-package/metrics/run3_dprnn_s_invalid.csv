@@ -1,0 +1,5 @@
+run,step,step_exact,d_all_si_sdri_db,s_all_silence_sdri_db,collapse_pct,eval_root,clips_per_split,validity,source,notes
+dprnn_s_tierb_sanity,10000,true,0.43,19.12,80,acsim_tierb,50,invalidated,research/phase1b/RUN-HISTORY.md,source-collapse metric gaming
+dprnn_s_tierb_sanity,20000,true,1.60,36.68,80,acsim_tierb,50,invalidated,research/phase1b/RUN-HISTORY.md,source-collapse metric gaming
+dprnn_s_tierb_sanity,30000,true,1.93,41.10,80,acsim_tierb,50,invalidated,research/phase1b/RUN-HISTORY.md,source-collapse metric gaming
+dprnn_s_tierb_sanity,40000,true,2.24,46.25,80,acsim_tierb,50,invalidated,research/phase1b/RUN-HISTORY.md,best headline; do not use

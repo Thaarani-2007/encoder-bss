@@ -1,0 +1,91 @@
+# DPRNN-256 Tier B — optimized 50k phase (fallback after ablation).
+# WandB: run_name dprnn_m_tierb — resume to 200k with dprnn_m_tierb.yaml + -Resume latest.pt
+#        (same WandB run via wandb_run_id in checkpoint; do NOT start a new run).
+project_name: bss-audio-acsim
+run_name: dprnn_m_tierb
+
+data:
+  root: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}
+  sample_rate: 16000
+  clip_seconds: 4.0
+  source: cache
+  cache_dir: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}/cache/train_acsim_200k
+  num_workers: 0
+
+training:
+  max_steps: 50000
+  batch_size: 1
+  grad_accum_steps: 16
+  precision: bf16
+  grad_clip: 5.0
+  log_every: 50
+  eval_every: 10000
+  save_every: 10000
+  seed: 42
+  gpu_rest_enabled: false
+  early_stop:
+    enabled: true
+    patience: 2
+    min_delta: 0.3
+    stop_on_regression: true
+    regression_delta: 1.0
+    min_steps: 50000
+
+optimizer:
+  name: adam
+  lr: 1.0e-3
+  betas: [0.9, 0.99]
+  weight_decay: 0.0
+  warmup_steps: 2000
+
+scheduler:
+  mode: rate_plateau
+  patience: 2
+  factor: 0.5
+  rate_floor: 1.5e-7
+  rate_ratio: 0.5
+  min_lr: 1.0e-6
+
+loss:
+  mode: acsim_ml
+  lambda_time: 2.0
+  lambda_mstft: 3.0
+  lambda_mel: 3.0
+  lambda_sdr: 12.0
+  mstft_fft_sizes: [512, 1024, 2048]
+  mel_n_fft: 1024
+  mel_n_mels: 128
+
+model:
+  name: dprnn_m
+  n_src: 2
+  encoder_dim: 256
+  hidden_dim: 256
+  chunk_size: 250
+  n_layers: 6
+
+eval:
+  root: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}/eval/acsim_tierb
+  max_clips_per_split: 50
+  metric_profile: train
+
+wandb:
+  enabled: true
+  project: bss-audio-acsim
+  entity: null
+  tags: [phase1b, dprnn-m, tierb, optimized, rate-plateau]
+  audio:
+    enabled: true
+    split: D-All
+    max_clips: 3
+    clip_indices: [0, 1, 2]
+
+simulation:
+  mode: acsim
+  p_speaker2: 0.5
+  p_static_noise: 0.5
+  p_event_noise: 0.3
+  p_seg: 0.75
+  l1: 0.2
+  l2: 1.0
+  p_event_overlap_removal: 0.5

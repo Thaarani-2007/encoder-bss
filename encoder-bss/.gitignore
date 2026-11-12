@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Training artifacts (keep locally; use LFS or release for weights)
+checkpoints/**/*.pt
+logs/
+wandb/
+demos/
+
+# Data (external drive)
+# E:/bss-audio-data is never in-repo
+
+# IDE / OS
+.idea/
+.vscode/
+desktop.ini
+*.log
+
+# Legacy handoff (code lives at repo root)
+transfer-package/source-snapshot/checkpoints/
+transfer-package/source-snapshot/wandb/
+transfer-package/source-snapshot/logs/

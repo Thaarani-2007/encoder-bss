@@ -1,0 +1,78 @@
+# DPRNN v2 smoke — 500 steps, wandb off, collapse gate disabled.
+project_name: bss-audio-acsim
+run_name: dprnn_m_tierb_v2_smoke
+
+data:
+  root: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}
+  sample_rate: 16000
+  clip_seconds: 5.0
+  source: cache
+  cache_dir: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}/cache/train_acsim_200k
+  num_workers: 0
+
+training:
+  max_steps: 500
+  batch_size: 1
+  grad_accum_steps: 16
+  precision: bf16
+  grad_clip: 5.0
+  log_every: 50
+  eval_every: 500
+  save_every: 500
+  seed: 42
+  gpu_rest_enabled: false
+  collapse_gate_step: 999999
+  collapse_gate_pct: 100.0
+  collapse_eval_clips: 10
+  early_stop:
+    enabled: false
+
+optimizer:
+  name: adam
+  lr: 1.0e-3
+  betas: [0.9, 0.99]
+  weight_decay: 0.0
+  warmup_steps: 100
+
+scheduler:
+  mode: plateau
+  patience: 3
+  factor: 0.5
+
+loss:
+  mode: pit_sisnr_hybrid
+  alpha: 0.2
+  lambda_collapse: 1.0
+  lambda_mixcopy: 0.5
+  lambda_time: 2.0
+  lambda_mstft: 3.0
+  lambda_mel: 3.0
+
+model:
+  name: dprnn_tasnet
+  n_src: 2
+  encoder_dim: 256
+  bottleneck_dim: 128
+  hidden_dim: 256
+  chunk_size: 250
+  hop_size: 125
+  n_layers: 6
+  mask_activation: softmax
+
+eval:
+  root: ${oc.env:BSS_DATA_ROOT,D:/bss-audio-data}/eval/acsim_tierb
+  max_clips_per_split: 20
+  metric_profile: train
+
+wandb:
+  enabled: false
+
+simulation:
+  mode: acsim
+  p_speaker2: 0.5
+  p_static_noise: 0.5
+  p_event_noise: 0.3
+  p_seg: 0.75
+  l1: 0.2
+  l2: 1.0
+  p_event_overlap_removal: 0.5

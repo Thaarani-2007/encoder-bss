@@ -1,0 +1,84 @@
+# Paper-aligned clean Conv-TasNet teacher (stage 1).
+project_name: bss-audio-acsim
+run_name: convtasnet_clean_teacher
+
+data:
+  root: ${oc.env:BSS_DATA_ROOT,E:/bss-audio-data}
+  sample_rate: 16000
+  clip_seconds: 5.0
+  source: cache
+  cache_dir: ${oc.env:BSS_DATA_ROOT,E:/bss-audio-data}/cache/convtasnet_paired_200k
+  input_mode: clean
+  require_paired: true
+  num_workers: 0
+
+training:
+  max_steps: 200000
+  batch_size: 1
+  grad_accum_steps: 16
+  precision: bf16
+  grad_clip: 5.0
+  log_every: 50
+  eval_every: 10000
+  save_every: 10000
+  seed: 42
+  gpu_rest_enabled: false
+  early_stop:
+    enabled: true
+    patience: 3
+    min_delta: 0.1
+    stop_on_regression: true
+    regression_delta: 0.5
+    min_steps: 50000
+
+optimizer:
+  name: adam
+  lr: 1.0e-3
+  betas: [0.9, 0.99]
+  weight_decay: 0.0
+  warmup_steps: 2000
+
+scheduler:
+  mode: plateau
+  patience: 3
+  factor: 0.5
+  min_lr: 1.0e-5
+
+loss:
+  mode: pit_sisnr
+  lambda_collapse: 0.5
+  lambda_mixcopy: 0.25
+
+model:
+  name: convtasnet_clean
+  n_src: 2
+  encoder_dim: 512
+  kernel_size: 16
+  stride: 8
+  bottleneck_dim: 128
+  hidden_dim: 512
+  n_blocks: 8
+  n_repeats: 3
+  mask_activation: sigmoid
+
+eval:
+  root: ${oc.env:BSS_DATA_ROOT,E:/bss-audio-data}/eval/acsim_clean
+  max_clips_per_split: 50
+  metric_profile: train
+
+wandb:
+  enabled: true
+  offline: false
+  project: bss-audio-acsim
+  entity: null
+  tags: [phase1b, convtasnet, clean, teacher, run7]
+
+simulation:
+  mode: acsim
+  p_speaker2: 1.0
+  p_static_noise: 0.0
+  p_event_noise: 0.0
+  p_seg: 0.75
+  l1: 0.2
+  l2: 1.0
+  p_event_overlap_removal: 0.0

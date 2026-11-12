@@ -1,0 +1,23 @@
+{
+  "description": "Documented Phase 1b results on eval/acsim_tierb, 50 clips, metric_profile train unless noted. Sources: research/EXPERIMENT-REGISTRY.md, training logs.",
+  "protocol": {
+    "eval_root_default": "eval/acsim_tierb",
+    "max_clips_per_split": 50,
+    "metric_profile": "train",
+    "primary_metric": "D-All si_sdri"
+  },
+  "runs": [
+    {"id": "sepformer_v1", "model": "SepFormer-S 8.47M", "step": 120000, "d_all_si_sdri_db": -8.64, "valid": true},
+    {"id": "sepformer_v2", "model": "SepFormer-S 8.47M", "step": 40000, "d_all_si_sdri_db": -1.45, "valid": true},
+    {"id": "dprnn_sanity", "model": "DPRNN-S 3.6M", "step": 40000, "d_all_si_sdri_db": 2.24, "valid": false, "note": "80% collapse"},
+    {"id": "dprnn_tasnet_run4", "model": "DPRNNTasNet 10.4M", "step": 130000, "d_all_si_sdri_db": 0.73, "valid": true},
+    {"id": "dprnn_tasnet_run5", "model": "DPRNNTasNet 10.4M", "step": 50000, "d_all_si_sdri_db": 1.41, "valid": true},
+    {"id": "run7_student_pit_50", "model": "NoisyConvTasNetStudent ~5M", "step": 60000, "d_all_si_sdri_db": 7.25, "valid": true, "json": "run7_student_pit_tierb_50.json"},
+    {"id": "run7_student_pit_225", "model": "NoisyConvTasNetStudent ~5M", "step": 60000, "d_all_si_sdri_db": 6.19, "valid": true, "json": "run7_student_pit_tierb_225.json"}
+  ],
+  "literature_chen2024_table1_d_all": [
+    {"model": "SepFormer + AC-SIM-ML", "d_all_si_sdri_db": 13.33, "reference": "arXiv:2408.16126 Table 1"},
+    {"model": "Conv-TasNet + AC-SIM-ML", "d_all_si_sdri_db": 10.86, "reference": "arXiv:2408.16126 Table 1"},
+    {"model": "DPRNN + AC-SIM-ML", "d_all_si_sdri_db": 10.88, "reference": "arXiv:2408.16126 Table 1"}
+  ]
+}
